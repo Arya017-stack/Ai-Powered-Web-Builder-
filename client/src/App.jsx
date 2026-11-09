@@ -11,7 +11,7 @@ import ProtectedRoute from './components/ProtectedRoute.jsx';
 function App() {
   const { user, loading } = useContext(AuthContext);
 
-  if (loading) {
+  if (loading) { 
     return (
       <div className="loading-state" style={{ minHeight: '100vh' }}>
         <div className="spinner" />

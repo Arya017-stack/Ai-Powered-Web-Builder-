@@ -9,7 +9,10 @@ const connectDB = async () => {
     }
 
     // Mongoose 9.x handles connection options automatically
-    const conn = await mongoose.connect(mongoURI);
+    const conn = await mongoose.connect(mongoURI, {
+      family: 4,
+      serverSelectionTimeoutMS: 10000,
+    });
 
     console.log(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
@@ -18,4 +21,4 @@ const connectDB = async () => {
   }
 };
 
-export default connectDB;
+export default connectDB; 

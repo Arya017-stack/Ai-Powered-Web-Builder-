@@ -1,29 +1,38 @@
-import axios from 'axios';
-import Cookies from 'js-cookie';
+import axios from "axios";
 
-const BASE_URL = 'http://localhost:5000/api';
+const BASE_URL = "http://localhost:5000/api";
 
 const getHeaders = () => {
-  const token = Cookies.get('token');
-  return token ? { Authorization: `Bearer ${token}` } : {};
+  const token = localStorage.getItem("token");
+
+  return token
+    ? { Authorization: `Bearer ${token}` }
+    : {};
 };
 
 const api = {
   get: async (url) => {
-    const response = await axios.get(`${BASE_URL}${url}`, { headers: getHeaders() });
-    return response;
+    return await axios.get(`${BASE_URL}${url}`, {
+      headers: getHeaders(),
+    });
   },
+
   post: async (url, data) => {
-    const response = await axios.post(`${BASE_URL}${url}`, data, { headers: getHeaders() });
-    return response;
+    return await axios.post(`${BASE_URL}${url}`, data, {
+      headers: getHeaders(),
+    });
   },
+
   put: async (url, data) => {
-    const response = await axios.put(`${BASE_URL}${url}`, data, { headers: getHeaders() });
-    return response;
+    return await axios.put(`${BASE_URL}${url}`, data, {
+      headers: getHeaders(),
+    });
   },
+
   delete: async (url) => {
-    const response = await axios.delete(`${BASE_URL}${url}`, { headers: getHeaders() });
-    return response;
+    return await axios.delete(`${BASE_URL}${url}`, {
+      headers: getHeaders(),
+    });
   },
 };
 
